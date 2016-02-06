@@ -1,3 +1,4 @@
+=MarioLANG=
 '''MarioLANG''' is a two-dimensional programming language made by [[User:Wh1teWolf]], based on Super Mario. The source code's layout is similar to a Super Mario world, however the programs written in MarioLANG when compiled looks completely like a normal application, it is even turing complete! This language was inspired by [[RubE On Conveyor Belts]].
 
 There is no official interpreter for MarioLANG and neither is a detailed specification on the exact behavior of Items and Instructions. However, [[User:myname]] made an interpreter mostly based on his own interpretation of unclear behaviors in Ruby [https://github.com/mynery/mariolang.rb]. There is also an interpreter written in C++ by [[User:T.J.S.1]] which, besides just interpreting it like a normal interpreter does, can also simulate the evaluation of the code in a graphical animation using ANSI colours in the terminal. It can be found [https://github.com/tomsmeding/MarioLANG here].
