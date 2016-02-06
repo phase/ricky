@@ -1,0 +1,84 @@
+'''MarioLANG''' is a two-dimensional programming language made by [[User:Wh1teWolf]], based on Super Mario. The source code's layout is similar to a Super Mario world, however the programs written in MarioLANG when compiled looks completely like a normal application, it is even turing complete! This language was inspired by [[RubE On Conveyor Belts]].
+
+There is no official interpreter for MarioLANG and neither is a detailed specification on the exact behavior of Items and Instructions. However, [[User:myname]] made an interpreter mostly based on his own interpretation of unclear behaviors in Ruby [https://github.com/mynery/mariolang.rb]. There is also an interpreter written in C++ by [[User:T.J.S.1]] which, besides just interpreting it like a normal interpreter does, can also simulate the evaluation of the code in a graphical animation using ANSI colours in the terminal. It can be found [https://github.com/tomsmeding/MarioLANG here].
+
+==Commands==
+Source code is comprised of ''parts, items,'' and ''instructions.''
+
+===Parts===
+The world is built up by four different pieces:
+*<code>=</code> : Ground. If Mario has no ground below his feet he falls until he lands on either ground or EOF.
+*<code>|</code> : Wall
+*<code>#</code> : Elevator starting point (can be both the highest or the lowest point on the elevator, however this is where Mario jumps onto the elevator.)
+*<code>"</code> : Elevator ending (can not be right or left from the starting position)
+
+===Items===
+When Mario finds one of the following items he executes its corresponding command.
+*<code>)</code> : Move memory pointer right
+*<code>(</code> : Move memory pointer left
+*<code>+</code> : Add one to the memory cell under the pointer
+*<code>-</code> : Subtract one from the memory cell under the pointer
+*<code>.</code> : Output ascii character from current memory cell
+*<code>:</code> : Output numeric value from current memory cell
+*<code>,</code> : Input ascii character to current memory cell
+*<code>;</code> : Input numeric value to current memory cell
+
+===Instructions to Mario===
+*<code>></code> : Go right
+*<code><</code> : Go left
+*<code>^</code> : Jump
+*<code>!</code> : Stop walking
+*<code>[</code> : Skip next command if current memory cell is zero
+*<code>@</code> : Start walking the other way
+
+Anything not recognized as a command is a comment.
+
+==Examples==
+===Commands Explained===
+ ++++:       >       >  +:+:+:+:+:+:+:::::
+ ====+      >^===    """=================
+     +:-):(:^=   =                       !
+     =========    =                      #
+                   = !             .+.,:-<
+                    =###           ======"
+Output: 4 6 0 5 6 7 8 9 10 11 12 12 12 12 12 11 
+
+After this the user is asked to input a letter and the program outputs it and the next letter in the alphabet.
+
+Now I am going to try to explain how the example level works:
+
+ ++++:  This code outputs '4'.
+ ====
+This gets done because there is floor underneath. When Mario reaches the ':', he executes it before he starts falling.
+
+ +
+ +:-):(:
+ =======
+Here Mario falls down and hits the '+'s on his way, making cell0 6. When he hits the floor he immediately starts walking to the right again and hits a ':' and outputs. Next item is a '-' decreasing the value of the current cell. The ')' moves to the next memory cell (cell1). ':(:' should be obvious by now.
+
+  >
+ >^===
+ ^=
+ ==
+As Mario hits the '^' he jumps up and hits the '>' making him go right while in the air, and landing on the '=' one step up, hitting the other '^' and repeating the procedure once more, landing on the top.
+
+ ===
+    =
+     =
+      =
+
+Here he goes down the stairs, ending up on the '=' at the bottom.
+
+  >  +:+:+:+:+:+:+:::::
+  """=================
+                      !
+                      #
+  !             .+.,:-<
+ =###           ======"
+
+When Mario hits the '!' he stops walking, but now he is on an elevator. Now he is lifted up to the '"'s, hitting a '>' making him walk right. After he has gone over to the solid ground he meets some '+'s and some ':'s doing some plusing and some output. When he goes over the edge he falls down to elevator and stops. The elevator takes him down to the bottom where he starts walking left. The current cell is subtracted and outputted, then the user is asked to input a character by the ',' command. Output this character and the next in the alphabet.
+
+[[Category:Languages]]
+[[Category:Cell-based]]
+[[Category:Turing complete]]
+[[Category:2009]]
